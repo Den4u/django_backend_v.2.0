@@ -53,7 +53,7 @@ class Post(PublishedModel):
         verbose_name='Дата и время публикации',
         help_text='Если установить дату и время в будущем — '
         'можно делать отложенные публикации.'
-     )
+        )
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE, verbose_name='Автор публикации')
@@ -61,12 +61,12 @@ class Post(PublishedModel):
         Location,
         on_delete=models.SET_NULL, blank=True, null=True,
         verbose_name='Местоположение'
-     )
+        )
     category = models.ForeignKey(
         Category,
         on_delete=models.SET_NULL, null=True,
         verbose_name='Категория'
-     )
+        )
 
     class Meta:
         verbose_name = 'публикация'
