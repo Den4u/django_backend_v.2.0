@@ -37,7 +37,7 @@ def test_author_on_delete(posts_with_author):
             'Проверьте, что значение атрибута `on_delete` '
             'поля `author` в модели `Post` соответствует заданию.'
         )
-    assert not Post.objects.filter(author=author).exists(),  (
+    assert not Post.objects.filter(author=author).exists(), (
         'Проверьте, что значение атрибута `on_delete` '
         'поля `author` в модели `Post` соответствует заданию.'
     )
