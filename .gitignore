@@ -1,4 +1,6 @@
 # Byte-compiled / optimized / DLL files
+.sqlite
+.sqlite3
 __pycache__/
 *.py[cod]
 *$py.class
@@ -109,7 +111,22 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-
+ .git/*
+ env/
+ venv/
+ .venv
+ .venv/
+ 
+ __pycache__/
+ *.py[cod]
+ 
+ .idea
+ .DS_Store
+ .AppleDouble
+ .LSOverride
+ 
+ *.sublime-project
+ *.sublime-workspace
 # Spyder project settings
 .spyderproject
 .spyproject
