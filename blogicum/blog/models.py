@@ -1,6 +1,7 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 
-from django.contrib.auth import get_user_model
+User = get_user_model()
 
 
 class PublishedModel(models.Model):
@@ -43,9 +44,6 @@ class Location(PublishedModel):
         return self.title
 
 
-User = get_user_model()
-
-
 class Post(PublishedModel):
     title = models.CharField(max_length=256, verbose_name='Заголовок')
     text = models.TextField(verbose_name='Текст')
@@ -56,15 +54,19 @@ class Post(PublishedModel):
     )
     author = models.ForeignKey(
         User,
-        on_delete=models.CASCADE, verbose_name='Автор публикации')
+        on_delete=models.CASCADE,
+        related_name='posts',
+        verbose_name='Автор публикации')
     location = models.ForeignKey(
         Location,
         on_delete=models.SET_NULL, blank=True, null=True,
+        related_name='posts',
         verbose_name='Местоположение'
     )
     category = models.ForeignKey(
         Category,
         on_delete=models.SET_NULL, null=True,
+        related_name='posts',
         verbose_name='Категория'
     )
 
@@ -73,4 +75,4 @@ class Post(PublishedModel):
         verbose_name_plural = 'Публикации'
 
     def __str__(self):
-        return self.title
+        return self.title[:40]
