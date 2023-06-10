@@ -1,6 +1,5 @@
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
-from django.db.models import Q
 from django.core.paginator import Paginator
 
 from .models import Category, Post
@@ -38,10 +37,9 @@ def category_posts(request, category_slug):
         slug=category_slug,
         is_published=True
     )
-    post_list = Post.objects.filter(
-        Q(category=category)
-        & Q(is_published=True)
-        & Q(pub_date__lte=timezone.now())
+    post_list = category.posts.filter(
+        is_published=True,
+        pub_date__lte=timezone.now()
     )
     template = 'blog/category.html'
     context = {
